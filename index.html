@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Tic-Tac-Toe</h1>
+
+        <div id="setup">
+            <div class="input-group">
+                <label for="player1">Player 1 Name:</label>
+                <input type="text" id="player1" placeholder="Player 1">
+            </div>
+            <div class="input-group">
+                <label for="player2">Player 2 Name:</label>
+                <input type="text" id="player2" placeholder="Player 2">
+            </div>
+            <button id="start-btn">Start Game</button>
+            <footer class="footer">
+                made with ❤️ by <a href="https://github.com/stevenstank" target="_blank"
+                    rel="noopener noreferrer">stevenstank</a>
+            </footer>
+        </div>
+
+        <div id="game" style="display: none;">
+            <div id="score-board">
+                <div class="score-item">
+                    <span id="player1-name">Player 1</span>: <span id="player1-score">0</span>
+                </div>
+                <div class="score-item">
+                    <span id="player2-name">Player 2</span>: <span id="player2-score">0</span>
+                </div>
+            </div>
+            <div id="message">Player 1's turn</div>
+            <div id="board"></div>
+            <div id="game-controls">
+                <button id="restart-btn">Restart Game</button>
+                <button id="home-btn" style="display: none;">Back to Home</button>
+            </div>
+            <footer class="footer">
+                made with ❤️ by <a href="https://github.com/stevenstank" target="_blank"
+                    rel="noopener noreferrer">stevenstank</a>
+            </footer>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
