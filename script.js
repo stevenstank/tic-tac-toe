@@ -29,6 +29,7 @@ const GameController = (() => {
     let currentPlayerIndex = 0;
     let gameOver = false;
     let scores = [0, 0];
+    let startingPlayerIndex = 0;
 
     const winningCombinations = [
         [0, 1, 2],
@@ -41,9 +42,16 @@ const GameController = (() => {
         [2, 4, 6],
     ];
 
-    const startGame = (player1Name, player2Name) => {
+    const startGame = (player1Name, player2Name, isRestart = false) => {
         players = [Player(player1Name || "Player 1", "X"), Player(player2Name || "Player 2", "O")];
-        currentPlayerIndex = 0;
+        if (isRestart) {
+            // Alternate starting player for restart
+            startingPlayerIndex = startingPlayerIndex === 0 ? 1 : 0;
+        } else {
+            // First game always starts with player 0
+            startingPlayerIndex = 0;
+        }
+        currentPlayerIndex = startingPlayerIndex;
         gameOver = false;
         Gameboard.resetBoard();
     };
@@ -101,6 +109,7 @@ const GameController = (() => {
 
     const resetScores = () => {
         scores = [0, 0];
+        startingPlayerIndex = 0;
     };
 
     return { startGame, getCurrentPlayer, playTurn, isGameOver, getScores, resetScores };
@@ -199,7 +208,7 @@ const DisplayController = (() => {
     };
 
     const handleRestart = () => {
-        GameController.startGame(player1Input.value.trim() || "Player 1", player2Input.value.trim() || "Player 2");
+        GameController.startGame(player1Input.value.trim() || "Player 1", player2Input.value.trim() || "Player 2", true);
         homeButton.style.display = "none";
         renderBoard();
         updateMessage(`${GameController.getCurrentPlayer().name}'s turn`);
